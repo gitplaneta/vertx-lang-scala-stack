@@ -52,22 +52,22 @@
       <version>${stack.version}</version>
     </dependency>
 
-    <!-- CODEGEN -->
-    <dependency>
-      <groupId>io.vertx</groupId>
-      <artifactId>vertx-codegen</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.vertx</groupId>
-      <artifactId>vertx-docgen</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>io.vertx</groupId>
-      <artifactId>vertx-codetrans</artifactId>
-      <optional>true</optional>
-    </dependency>
+    <!--&lt;!&ndash; CODEGEN &ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>io.vertx</groupId>-->
+      <!--<artifactId>vertx-codegen</artifactId>-->
+      <!--<scope>provided</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>io.vertx</groupId>-->
+      <!--<artifactId>vertx-docgen</artifactId>-->
+      <!--<optional>true</optional>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>io.vertx</groupId>-->
+      <!--<artifactId>vertx-codetrans</artifactId>-->
+      <!--<optional>true</optional>-->
+    <!--</dependency>-->
   </dependencies>
   <build>
     <pluginManagement>
@@ -160,83 +160,83 @@
           </configuration>
           <executions>
             <!-- Run the annotation processor and generate the Scala API -->
-            <execution>
-              <id>generate-api</id>
-              <goals>
-                <goal>process</goal>
-              </goals>
-              <phase>generate-sources</phase>
-              <configuration>
-                <processors>
-                  <processor>io.vertx.codegen.CodeGenProcessor</processor>
-                  <processor>io.vertx.docgen.DocGenProcessor</processor>
-                </processors>
-                <optionMap>
-                  <outputDirectory>${project.basedir}/src/main</outputDirectory>
-                  <docgen.output>${asciidoc.dir}/scala</docgen.output>
-                </optionMap>
-                <sourceDirectory>${project.build.directory}/sources/vertx</sourceDirectory>
-              </configuration>
-            </execution>
-            <!-- Run the annotation processor on codegen and generate the Scala codegen -->
-            <execution>
-              <id>generate-codegen</id>
-              <goals>
-                <goal>process</goal>
-              </goals>
-              <phase>generate-test-sources</phase>
-              <configuration>
-                <processors>
-                  <processor>io.vertx.codegen.CodeGenProcessor</processor>
-                </processors>
-                <optionMap>
-                  <outputDirectory>${project.basedir}/src/test</outputDirectory>
-                </optionMap>
-                <sourceDirectory>${project.build.directory}/sources/codegen</sourceDirectory>
-              </configuration>
-            </execution>
-            <!-- We have to run the annotation processor again to process docs -->
-            <execution>
-              <id>docgen-docs</id>
-              <goals>
-                <goal>process</goal>
-              </goals>
-              <phase>prepare-package</phase>
-              <configuration>
-                <processors>
-                  <processor>io.vertx.docgen.DocGenProcessor</processor>
-                </processors>
-                <optionMap>
-                  <outputDirectory>${project.basedir}/src/main</outputDirectory>
-                  <docgen.output>${asciidoc.dir}/scala</docgen.output>
-                  <maven.groupId>${project.groupId}</maven.groupId>
-                  <maven.artifactId>${project.artifactId}</maven.artifactId>
-                  <maven.version>${project.version}</maven.version>
-                </optionMap>
-                <sourceDirectory>${project.build.directory}/sources/vertx</sourceDirectory>
-              </configuration>
-            </execution>
-            <!-- We have to run the annotation processor again to process docoverride -->
-            <execution>
-              <id>docgen-docoverride</id>
-              <goals>
-                <goal>process</goal>
-              </goals>
-              <phase>prepare-package</phase>
-              <configuration>
-                <processors>
-                  <processor>io.vertx.docgen.DocGenProcessor</processor>
-                </processors>
-                <optionMap>
-                  <outputDirectory>${project.basedir}/src/main</outputDirectory>
-                  <docgen.output>${asciidoc.dir}/scala</docgen.output>
-                  <maven.groupId>${project.groupId}</maven.groupId>
-                  <maven.artifactId>${project.artifactId}</maven.artifactId>
-                  <maven.version>${project.version}</maven.version>
-                </optionMap>
-                <sourceDirectory>${project.basedir}/src/main/docoverride</sourceDirectory>
-              </configuration>
-            </execution>
+            <!--<execution>-->
+              <!--<id>generate-api</id>-->
+              <!--<goals>-->
+                <!--<goal>process</goal>-->
+              <!--</goals>-->
+              <!--<phase>generate-sources</phase>-->
+              <!--<configuration>-->
+                <!--<processors>-->
+                  <!--<processor>io.vertx.codegen.CodeGenProcessor</processor>-->
+                  <!--<processor>io.vertx.docgen.DocGenProcessor</processor>-->
+                <!--</processors>-->
+                <!--<optionMap>-->
+                  <!--<outputDirectory>${project.basedir}/src/main</outputDirectory>-->
+                  <!--<docgen.output>${asciidoc.dir}/scala</docgen.output>-->
+                <!--</optionMap>-->
+                <!--<sourceDirectory>${project.build.directory}/sources/vertx</sourceDirectory>-->
+              <!--</configuration>-->
+            <!--</execution>-->
+            <!--&lt;!&ndash; Run the annotation processor on codegen and generate the Scala codegen &ndash;&gt;-->
+            <!--<execution>-->
+              <!--<id>generate-codegen</id>-->
+              <!--<goals>-->
+                <!--<goal>process</goal>-->
+              <!--</goals>-->
+              <!--<phase>generate-test-sources</phase>-->
+              <!--<configuration>-->
+                <!--<processors>-->
+                  <!--<processor>io.vertx.codegen.CodeGenProcessor</processor>-->
+                <!--</processors>-->
+                <!--<optionMap>-->
+                  <!--<outputDirectory>${project.basedir}/src/test</outputDirectory>-->
+                <!--</optionMap>-->
+                <!--<sourceDirectory>${project.build.directory}/sources/codegen</sourceDirectory>-->
+              <!--</configuration>-->
+            <!--</execution>-->
+            <!--&lt;!&ndash; We have to run the annotation processor again to process docs &ndash;&gt;-->
+            <!--<execution>-->
+              <!--<id>docgen-docs</id>-->
+              <!--<goals>-->
+                <!--<goal>process</goal>-->
+              <!--</goals>-->
+              <!--<phase>prepare-package</phase>-->
+              <!--<configuration>-->
+                <!--<processors>-->
+                  <!--<processor>io.vertx.docgen.DocGenProcessor</processor>-->
+                <!--</processors>-->
+                <!--<optionMap>-->
+                  <!--<outputDirectory>${project.basedir}/src/main</outputDirectory>-->
+                  <!--<docgen.output>${asciidoc.dir}/scala</docgen.output>-->
+                  <!--<maven.groupId>${project.groupId}</maven.groupId>-->
+                  <!--<maven.artifactId>${project.artifactId}</maven.artifactId>-->
+                  <!--<maven.version>${project.version}</maven.version>-->
+                <!--</optionMap>-->
+                <!--<sourceDirectory>${project.build.directory}/sources/vertx</sourceDirectory>-->
+              <!--</configuration>-->
+            <!--</execution>-->
+            <!--&lt;!&ndash; We have to run the annotation processor again to process docoverride &ndash;&gt;-->
+            <!--<execution>-->
+              <!--<id>docgen-docoverride</id>-->
+              <!--<goals>-->
+                <!--<goal>process</goal>-->
+              <!--</goals>-->
+              <!--<phase>prepare-package</phase>-->
+              <!--<configuration>-->
+                <!--<processors>-->
+                  <!--<processor>io.vertx.docgen.DocGenProcessor</processor>-->
+                <!--</processors>-->
+                <!--<optionMap>-->
+                  <!--<outputDirectory>${project.basedir}/src/main</outputDirectory>-->
+                  <!--<docgen.output>${asciidoc.dir}/scala</docgen.output>-->
+                  <!--<maven.groupId>${project.groupId}</maven.groupId>-->
+                  <!--<maven.artifactId>${project.artifactId}</maven.artifactId>-->
+                  <!--<maven.version>${project.version}</maven.version>-->
+                <!--</optionMap>-->
+                <!--<sourceDirectory>${project.basedir}/src/main/docoverride</sourceDirectory>-->
+              <!--</configuration>-->
+            <!--</execution>-->
           </executions>
         </plugin>
         <plugin>
@@ -307,4 +307,17 @@
     <module>vertx-web-scala</module>
     <module>vertx-mysql-postgresql-client-scala</module>
   </modules>
+
+  <distributionManagement>
+    <repository>
+      <id>deployment</id>
+      <name>Internal Releases</name>
+      <url>http://artifactory.connect-api:8080/artifactory/libs-snapshot-local/</url>
+    </repository>
+    <snapshotRepository>
+      <id>deployment</id>
+      <name>Internal Releases</name>
+      <url>http://artifactory.connect-api:8080/artifactory/libs-snapshot-local/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>

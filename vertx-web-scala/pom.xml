@@ -125,4 +125,17 @@
     </plugins>
   </build>
 
+  <distributionManagement>
+    <repository>
+      <id>deployment</id>
+      <name>Internal Releases</name>
+      <url>http://artifactory.connect-api:8080/artifactory/libs-snapshot-local/</url>
+    </repository>
+    <snapshotRepository>
+      <id>deployment</id>
+      <name>Internal Releases</name>
+      <url>http://artifactory.connect-api:8080/artifactory/libs-snapshot-local/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
